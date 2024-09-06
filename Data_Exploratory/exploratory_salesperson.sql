@@ -16,3 +16,19 @@ limit 5;
 281	841560125	Michael Blythe	Sales Representative	        michael-blythe@adventureworks.com
 282	191644724	Linda Mitchell	Sales Representative	        linda-mitchell@adventureworks.com
 283	615389812	Jillian Carson	Sales Representative	        jillian-carson@adventureworks.com
+
+SELECT *
+FROM salesperson
+WHERE employeekey = 288;
+288	399771412	Jos√© Saraiva	Sales Representative	jose-saraiva@adventureworks.com
+
+--Fix salesperson's name
+UPDATE salesperson
+SET salesperson = 'Jose Saraiva'
+WHERE employeekey = 288;
+
+SELECT *
+FROM salesperson
+WHERE employeekey = 288;
+288	399771412	Jose Saraiva	Sales Representative	jose-saraiva@adventureworks.com
+
