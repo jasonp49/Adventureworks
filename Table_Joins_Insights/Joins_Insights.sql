@@ -140,4 +140,24 @@ Tsvi Reiter	              Southeast	      Mountain Frames	137626	441	312
 Tete Mensa-Annan	        Northwest	      Touring Frames	136809	310	441
 Pamela Ansman-Wolfe	      Northwest	      Mountain Frames	125100	357	350
 
---
+--Top sellers of bikes in 2019, 2020 combined
+SELECT sp.salesperson, r.region,
+	SUM(s.sales) AS TotalSales, SUM(s.quantity) AS QuantitySold, SUM(s.sales)/SUM(s.quantity) AS AvgSale
+FROM salesperson sp
+JOIN sales s ON s.employeekey = sp.employeekey 
+JOIN products p ON p.productkey = s.productkey 
+JOIN region r ON s.salesterritorykey = r.salesterritorykey
+WHERE (s.orderdate LIKE '%2020%' OR s.orderdate LIKE '%2019%') AND p.subcategory LIKE '%Bikes%'
+GROUP BY sp.salesperson, r.region
+ORDER BY SUM(s.sales) DESC
+LIMIT 10;
+Jae Pak				Canada		4370370	5091	858
+Jillian Carson			Northeast	2972829	3639	816
+Ranjit Varkey Chudukatil	France		2772771	3265	849
+Linda Mitchell			Southwest	2770023	3247	853
+Michael Blythe			Southwest	2691257	3129	860
+Tsvi Reiter			Southeast	2563824	3091	829
+Shu Ito				Southwest	2305594	2857	806
+Jose Saraiva			United Kingdom	2134861	2560	833
+Tete Mensa-Annan		Northwest	1628565	1974	825
+David Campbell			Northwest	1519419	1720	883
