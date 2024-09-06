@@ -19,3 +19,4 @@ FROM region;
 8	Germany	        Germany	        Europe
 9	Australia	      Australia	      Pacific
 10United Kingdom	United Kingdom	Europe
+
