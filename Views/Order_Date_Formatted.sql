@@ -1,3 +1,5 @@
+--THIS IS USUALLY UNNECESSARY, USE LIKE '%July%2017' TO AGGREGATE DATES IN NATIVE STRING FORMAT
+
 CREATE VIEW OrderToDate AS 
 	SELECT DISTINCT orderdate AS orderstring,
 		TO_DATE(LTRIM(orderdate, SPLIT_PART(orderdate, ' ', 1)),'Month DD YYYY') AS dateorder
