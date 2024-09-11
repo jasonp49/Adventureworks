@@ -1,3 +1,5 @@
+--THIS IS USUALLY UNNECESSARY, USE (LIKE '%July%2017') TO AGGREGATE DATES IN NATIVE STRING FORMAT
+
 CREATE VIEW TargetToDate AS 
 	SELECT DISTINCT targetmonth                                                    AS TargetString,
 		TO_DATE(LTRIM(targetmonth, SPLIT_PART(targetmonth, ' ', 1)),'Month DD YYYY') AS TargetDate
