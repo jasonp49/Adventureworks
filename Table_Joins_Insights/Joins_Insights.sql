@@ -182,3 +182,26 @@ Pamela Ansman-Wolfe	600000.00	153005
 Shu Ito	                300000.00	 34074
 Stephen Jiang	       1000000.00	 20537
 Tsvi Reiter	        300000.00	302801
+
+--Rank salespeople by % of target sold
+
+SELECT sp.salesperson, 
+	t.target AS June2018_Target, 
+	sum(sales) AS May2018_Sales,
+	ROUND((sum(sales)*100.0)/t.target, 2) AS PercentOfTarget
+FROM salesperson sp
+JOIN sales s ON s.employeekey = sp.employeekey 
+JOIN targets t ON t.employeeid = sp.employeeid 
+WHERE s.orderdate LIKE '%May%2018' AND t.targetmonth LIKE '%Jun%2018'
+GROUP BY 	sp.salesperson, t.target
+ORDER BY 4 DESC;
+Jillian Carson	         200000.00	464086	232.04
+Tsvi Reiter	         200000.00	375024	187.51
+Linda Mitchell	         400000.00	401651	100.41
+Jose Saraiva	         225000.00	211919	94.19
+Garrett Vargas	         225000.00	172582	76.70
+David Campbell	         175000.00	115867	66.21
+Michael Blythe	         500000.00	172342	34.47
+Shu Ito	                 500000.00	103464	20.69
+Pamela Ansman-Wolfe	1250000.00	252037	20.16
+
