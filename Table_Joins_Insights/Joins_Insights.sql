@@ -161,3 +161,24 @@ Shu Ito				Southwest	2305594	2857	806
 Jose Saraiva			United Kingdom	2134861	2560	833
 Tete Mensa-Annan		Northwest	1628565	1974	825
 David Campbell			Northwest	1519419	1720	883
+
+--See how salespeople did vs. Targets on a given month
+
+SELECT sp.salesperson, 
+		t.target AS Sept2017_Target, 
+		sum(sales) AS Aug2017_Sales
+FROM salesperson sp
+JOIN sales s ON s.employeekey = sp.employeekey 
+JOIN targets t ON t.employeeid = sp.employeeid 
+WHERE s.orderdate LIKE '%Aug%2017' AND t.targetmonth LIKE '%Sept%2017'
+GROUP BY sp.salesperson, t.target;
+David Campbell	        300000.00	 65100
+Garrett Vargas	        300000.00	156585
+Jillian Carson	        100000.00	267690
+Jose Saraiva	        300000.00	160378
+Linda Mitchell	        500000.00	270880
+Michael Blythe	        400000.00	108480
+Pamela Ansman-Wolfe	600000.00	153005
+Shu Ito	                300000.00	 34074
+Stephen Jiang	       1000000.00	 20537
+Tsvi Reiter	        300000.00	302801
